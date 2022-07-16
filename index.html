@@ -1,10 +1,13 @@
 <html>
-    <input type="text" id="input" placeholder="Guess a country: ">
-    Current Population: <span id="pop"></span>
-    Percent of Population: <span id="per"></span>
-    <span id="ratio"></span> Countries
-    <br>
-    <canvas id="canvas" width="933" height="523"></canvas>
     <head><link rel="stylesheet" href="img.css"></head>
+    <input type="text" id="input" placeholder="Guess a country: ">
+    <div id="stats">
+        <span class='letters'>Current Population: <span class="v" id="pop"></span></span>
+        <span class='letters'>Percent of Population: <span class="v" id="per"></span></span>
+        <span class='letters'><span class="v" id="ratio"></span> Countries Found</span>
+    </div>
+
+    <canvas id="canvas" width="933" height="523"></canvas>
+
     <script language="javascript" type="text/javascript" src="img.js"></script>
 </html>
