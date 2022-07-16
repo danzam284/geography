@@ -16,9 +16,10 @@ img.crossOrigin = "Anonymous";
 img.src = 'countries.png';
 var canvas = document.getElementById("canvas");
 var ctx = canvas.getContext("2d");
+
+//Loads the image and prefills with the users local storage statistics
 img.onload = function() {
     ctx.drawImage(img, 0, 0);
-
     for (let i = 0; i < chosen.length; i++) {
         let guess = chosen[i];
         let names = Object.keys(countries);
@@ -38,6 +39,8 @@ img.onload = function() {
         }
     }
 };
+
+//Manages the users local storage data
 var chosen = [];
 if (!localStorage.chosen) {
     localStorage.chosen = "";
@@ -52,10 +55,7 @@ else {
     }
 }
 
-
-
-
-
+//Fills in a country on the map based on x and y coordinate
 function bucket(x, y) {
     var data = ctx.getImageData(x, y, 1, 1).data;
     var r = data[0];
@@ -88,6 +88,7 @@ function bucket(x, y) {
     }
 }
 
+//Utilized for a more accurate fill
 function bucket2(x, y) {
     var data = ctx.getImageData(x, y, 1, 1).data;
     var r = data[0];
@@ -119,6 +120,8 @@ function bucket2(x, y) {
         }
     }
 }
+
+//Data for the position and population of each country
 countries = {
     'Afghanistan':[38928346, 605, 237],
     'Albania':[2877797],
@@ -324,6 +327,7 @@ countries = {
     'Zimbabwe':[14800000, 512, 380],
 }
 
+//Processes guess input
 document.addEventListener("keyup", async function(event) {
     if (event.keyCode === 13) {
         let guess = textbox.value.toUpperCase();
@@ -348,7 +352,7 @@ document.addEventListener("keyup", async function(event) {
     }
 });
 
-
+//Checks if a country has already been obtained
 function alreadyPicked(country) {
     for (let i = 0; i < chosen.length; i++) {
         if (country.toUpperCase() == chosen[i]) {
